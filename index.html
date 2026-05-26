@@ -246,6 +246,70 @@ font-size:1.7rem;
 }
 }
 
+/* Ajustes específicos para iPhone 12 Pro (390x844) */
+@media (width: 390px) and (height: 844px) and (orientation: portrait) {
+	body{
+		height:auto;
+		overflow:auto;
+		padding:18px 0;
+	}
+
+	.container{
+		padding:12px;
+	}
+
+	.envelope{
+		width:220px;
+		height:150px;
+	}
+
+	.envelope::before{
+		border-left:110px solid transparent;
+		border-right:110px solid transparent;
+		border-top:90px solid #ff8fab;
+	}
+
+	.seal{
+		width:60px;
+		height:60px;
+		top:62px;
+	}
+
+	.card{
+		max-width:360px;
+		padding:18px;
+		border-radius:20px;
+	}
+
+	.unicorn-img{
+		width:150px;
+	}
+
+	.title{
+		font-size:1.4rem;
+	}
+
+	.subtitle{
+		font-size:0.95rem;
+	}
+
+	.info{
+		padding:14px;
+	}
+
+	.input{
+		padding:12px;
+		font-size:0.95rem;
+	}
+
+	.button{
+		padding:12px;
+		font-size:0.95rem;
+		border-radius:14px;
+	}
+
+}
+
 </style>
 </head>
 <body>
