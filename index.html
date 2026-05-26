@@ -10,304 +10,339 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+:root {
+  font-size: 16px;
 }
 
-body{
-height:100vh;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#ffe5ec,#f3e8ff,#dbeafe);
-position:relative;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Brillos */
-body::before{
-content:"";
-position:absolute;
-inset:0;
-background-image:
-radial-gradient(circle,#ffffff 1px,transparent 1px),
-radial-gradient(circle,#ffd700 1px,transparent 1px);
-background-size:40px 40px,60px 60px;
-animation:moveSparkles 10s linear infinite;
-opacity:.5;
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes moveSparkles{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #ffe5ec, #f3e8ff, #dbeafe);
+  position: relative;
 }
 
-.container{
-position:relative;
-z-index:2;
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #ffffff 1px, transparent 1px),
+    radial-gradient(circle, #ffd700 1px, transparent 1px);
+  background-size: 3rem 3rem, 4rem 4rem;
+  animation: moveSparkles 10s linear infinite;
+  opacity: .45;
+  pointer-events: none;
 }
 
-/* SOBRE */
-.screen1{
-display:flex;
-flex-direction:column;
-align-items:center;
+@keyframes moveSparkles {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.envelope-wrapper{
-position:relative;
-cursor:pointer;
-animation:float 3s ease-in-out infinite;
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 44rem);
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+  padding: 0 0.5rem;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
+.screen1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  text-align: center;
 }
 
-.envelope{
-width:300px;
-height:190px;
-background:#ffb3c6;
-position:relative;
-border-radius:0 0 14px 14px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
+.envelope-wrapper {
+  position: relative;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
 }
 
-.envelope::before{
-content:"";
-position:absolute;
-width:0;
-height:0;
-border-left:150px solid transparent;
-border-right:150px solid transparent;
-border-top:100px solid #ff8fab;
-top:0;
-transform-origin:top;
-transition:.6s;
-z-index:2;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
-.seal{
-position:absolute;
-top:70px;
-left:50%;
-transform:translateX(-50%);
-width:75px;
-height:75px;
-border-radius:50%;
-background:white;
-display:flex;
-justify-content:center;
-align-items:center;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
-z-index:5;
-overflow:hidden;
+.envelope {
+  width: min(23rem, 90vw);
+  aspect-ratio: 300 / 190;
+  background: #ffb3c6;
+  position: relative;
+  border-radius: 0 0 0.875rem 0.875rem;
+  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, .15);
+  max-width: 23rem;
 }
 
-.seal img{
-width:100%;
-height:100%;
-object-fit:cover;
+.envelope::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 12.5rem solid transparent;
+  border-right: 12.5rem solid transparent;
+  border-top: 7.5rem solid #ff8fab;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: top;
+  transition: .6s;
+  z-index: 2;
 }
 
-.tap{
-margin-top:25px;
-font-weight:600;
-color:#7b2cbf;
-text-align:center;
-animation:pulse 2s infinite;
+.seal {
+  position: absolute;
+  top: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, .15);
+  z-index: 5;
+  overflow: hidden;
 }
 
-@keyframes pulse{
-50%{opacity:.5}
+.seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.open .envelope::before{
-transform:rotateX(180deg);
+.tap {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: #7b2cbf;
+  text-align: center;
+  animation: pulse 2s infinite;
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
-/* TARJETA */
-.card{
-display:none;
-width:100%;
-max-width:420px;
-background:rgba(255,255,255,.92);
-backdrop-filter:blur(8px);
-padding:28px;
-border-radius:28px;
-text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-animation:showCard .8s ease;
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
 }
 
-@keyframes showCard{
-from{
-opacity:0;
-transform:translateY(40px) scale(.8);
+.open .envelope::before {
+  transform: translateX(-50%) rotateX(180deg);
 }
 
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-}
-
-.unicorn-img{
-width:190px;
-margin:auto;
-filter:drop-shadow(0 8px 15px rgba(255,105,180,.25));
-}
-
-.title{
-margin-top:10px;
-font-size:2rem;
-color:#ff4d8d;
-font-weight:700;
+.card {
+  display: none;
+  width: min(100%, 42rem);
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(8px);
+  padding: 1.75rem;
+  border-radius: 1.75rem;
+  text-align: center;
+  box-shadow: 0 0.9375rem 2.5rem rgba(0, 0, 0, .15);
+  animation: showCard .8s ease;
 }
 
-.subtitle{
-margin-top:8px;
-font-size:1rem;
-color:#666;
-line-height:1.6;
+@keyframes showCard {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem) scale(.88);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-.info{
-margin-top:20px;
-background:#fff0f6;
-padding:18px;
-border-radius:18px;
-line-height:1.8;
-color:#5c5470;
-font-weight:500;
+.unicorn-img {
+  width: min(12rem, 55vw);
+  max-width: 14rem;
+  margin: 0 auto;
+  filter: drop-shadow(0 0.5rem 0.9375rem rgba(255, 105, 180, .25));
 }
 
-.input{
-width:100%;
-padding:14px;
-border-radius:14px;
-border:2px solid #ffd6e0;
-margin-top:22px;
-font-size:1rem;
-outline:none;
-text-align:center;
+.title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  color: #ff4d8d;
+  font-weight: 700;
+  line-height: 1.1;
 }
 
-.input:focus{
-border-color:#ff8fab;
+.subtitle {
+  margin-top: 0.75rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  color: #666;
+  line-height: 1.7;
 }
 
-.button{
-margin-top:18px;
-width:100%;
-padding:15px;
-border:none;
-border-radius:16px;
-background:linear-gradient(90deg,#ff8fab,#cdb4db,#a0c4ff);
-color:white;
-font-size:1rem;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 8px 18px rgba(255,105,180,.3);
+.info {
+  margin-top: 1.25rem;
+  background: #fff0f6;
+  padding: 1.25rem;
+  border-radius: 1.125rem;
+  line-height: 1.9;
+  color: #5c5470;
+  font-weight: 500;
+  text-align: left;
 }
 
-.button:hover{
-transform:translateY(-2px) scale(1.01);
+.input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: .125rem solid #ffd6e0;
+  margin-top: 1.375rem;
+  font-size: 1rem;
+  outline: none;
+  text-align: center;
 }
 
-@media(max-width:480px){
-.envelope{
-width:260px;
-height:170px;
+.input:focus {
+  border-color: #ff8fab;
 }
 
-.envelope::before{
-border-left:130px solid transparent;
-border-right:130px solid transparent;
+.button {
+  margin-top: 1.25rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #ff8fab, #cdb4db, #a0c4ff);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 0.5rem 1.125rem rgba(255, 105, 180, .3);
 }
 
-.card{
-padding:22px;
+.button:hover {
+  transform: translateY(-.15rem) scale(1.01);
 }
 
-.title{
-font-size:1.7rem;
+@media (min-width: 40rem) {
+  .container {
+    gap: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .envelope {
+    width: min(24rem, 85vw);
+  }
+
+  .envelope::before {
+    border-left: 13rem solid transparent;
+    border-right: 13rem solid transparent;
+    border-top: 8rem solid #ff8fab;
+  }
+
+  .seal {
+    width: 5rem;
+    height: 5rem;
+    top: 4.75rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .info {
+    padding: 1.5rem;
+  }
 }
+
+@media (min-width: 56rem) {
+  body {
+    padding: 3rem 2rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .envelope {
+    width: min(25rem, 70vw);
+  }
+
+  .envelope::before {
+    border-left: 13.5rem solid transparent;
+    border-right: 13.5rem solid transparent;
+    border-top: 8.5rem solid #ff8fab;
+  }
+
+  .card {
+    padding: 2.5rem;
+    border-radius: 2rem;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 2.8vw, 3rem);
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .input,
+  .button {
+    font-size: 1rem;
+  }
 }
 
-/* Ajustes específicos para iPhone 12 Pro (390x844) */
-@media (width: 390px) and (height: 844px) and (orientation: portrait) {
-	body{
-		height:auto;
-		overflow:auto;
-		padding:18px 0;
-	}
+@media (min-width: 80rem) {
+  .container {
+    width: 42rem;
+  }
 
-	.container{
-		padding:12px;
-	}
+  .envelope {
+    width: 26rem;
+  }
 
-	.envelope{
-		width:220px;
-		height:150px;
-	}
+  .envelope::before {
+    border-left: 14rem solid transparent;
+    border-right: 14rem solid transparent;
+    border-top: 8.75rem solid #ff8fab;
+  }
 
-	.envelope::before{
-		border-left:110px solid transparent;
-		border-right:110px solid transparent;
-		border-top:90px solid #ff8fab;
-	}
-
-	.seal{
-		width:60px;
-		height:60px;
-		top:62px;
-	}
-
-	.card{
-		max-width:360px;
-		padding:18px;
-		border-radius:20px;
-	}
-
-	.unicorn-img{
-		width:150px;
-	}
-
-	.title{
-		font-size:1.4rem;
-	}
-
-	.subtitle{
-		font-size:0.95rem;
-	}
-
-	.info{
-		padding:14px;
-	}
-
-	.input{
-		padding:12px;
-		font-size:0.95rem;
-	}
-
-	.button{
-		padding:12px;
-		font-size:0.95rem;
-		border-radius:14px;
-	}
-
+  .card {
+    width: 100%;
+  }
 }
 
 </style>
